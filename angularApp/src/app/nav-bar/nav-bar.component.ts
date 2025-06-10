@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
-
+  Menu: string[]= ["Home", 'Menu', 'Contact']
 }

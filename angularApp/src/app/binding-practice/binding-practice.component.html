@@ -8,4 +8,12 @@
 
 <button [disabled]="product.inStock <= 0" >Submit</button>
 
-<input type="name" [value]="product.productName">
+
+<input type="name" [value]="product.productName"><br>
+
+<div style="display: flex;;">
+    <button (click)="decrement()" >-</button>
+    <p>{{cart}}</p>
+    <button (click)="increment()" >+</button>
+</div>
+

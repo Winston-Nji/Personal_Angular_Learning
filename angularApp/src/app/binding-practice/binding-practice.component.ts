@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './binding-practice.component.scss'
 })
 export class BindingPracticeComponent {
+  cart:number = 0
   product = {
     productName: 'Iphone XR',
-    inStock:0,
+    inStock:10,
     color:'red',
     price: 1999,
     discount: 10,
@@ -18,4 +19,18 @@ export class BindingPracticeComponent {
   priceDiscount(){
     return (this.product.discount / 100) * this.product.price
   }
+
+  decrement(){
+    if(this.cart > 0){
+      this.cart --
+    }
+  }
+
+  increment(){
+    if(this.cart !== this.product.inStock){
+      this.cart++
+    }
+  }
 }
+
+

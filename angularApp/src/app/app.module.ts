@@ -9,6 +9,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { BindingPracticeComponent } from './binding-practice/binding-practice.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     PostListComponent,
     BindingPracticeComponent,
     SearchComponent,
+    ProductListComponent,
     
   ],
   imports: [

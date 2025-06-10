@@ -1,7 +1,21 @@
 .searchDiv{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+}
+
+.searchDiv form{
+    background-color: red;
+    display: flex;
+    align-self: center;
+    margin-top: 20px;
+    
+}
+
+.searchDiv form input{
+    padding: 10px;
+}
+
+.displaySearchMsg{
+    padding-left: 10px;
+    font-weight: 600;
 }

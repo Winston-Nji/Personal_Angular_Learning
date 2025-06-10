@@ -1,0 +1,11 @@
+.navBar{
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    width: -100%;
+    font-size: larger;
+}
+
+.navBar li:hover{
+    text-decoration: underline;
+}

@@ -1,9 +1,12 @@
 <div class="searchDiv">
-        <input  type="text" [(ngModel)]="searchText">
-        <button>Search</button>
-    
 
-   <div>
+    <form action="">
+        <input name="searchText"  type="text" [(ngModel)]="searchText">
+        <button>Search</button>
+    </form>
+        
+
+   <div class="displaySearchMsg">
         <p>Search results for: {{searchText}}</p>
    </div>
 </div>

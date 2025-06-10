@@ -1,0 +1,11 @@
+<img [src]="product.pImage" alt="">
+<p>Name: {{product.productName}}</p>
+<p>Price: {{product.price}}</p>
+<p>Color: {{product.color}}</p>
+<p>Discounted Price : {{priceDiscount()}}</p>
+
+<p>Items left: {{product.inStock > 0? product.inStock : 'No products left'}}</p>
+
+<button [disabled]="product.inStock <= 0" >Submit</button>
+
+<input type="name" [value]="product.productName">

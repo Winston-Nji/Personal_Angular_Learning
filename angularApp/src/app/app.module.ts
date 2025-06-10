@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { BindingPracticeComponent } from './binding-practice/binding-practice.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { PostListComponent } from './post-list/post-list.component';
     NavBarComponent,
     PostComponent,
     PostListComponent,
+    BindingPracticeComponent,
     
   ],
   imports: [

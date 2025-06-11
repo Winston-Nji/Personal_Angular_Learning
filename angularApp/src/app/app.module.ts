@@ -7,11 +7,12 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { BindingPracticeComponent } from './binding-practice/binding-practice.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './container/search/search.component';
 import { FormsModule } from '@angular/forms';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductComponent } from './product/product.component';
-import { FilterComponent } from './filter/filter.component';
+import { ProductListComponent } from './container/product-list/product-list.component';
+import { ProductComponent } from './container/product/product.component';
+import { FilterComponent } from './container/filter/filter.component';
+import { ContainerComponent } from './container/container.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FilterComponent } from './filter/filter.component';
     ProductListComponent,
     ProductComponent,
     FilterComponent,
+    ContainerComponent,
     
   ],
   imports: [

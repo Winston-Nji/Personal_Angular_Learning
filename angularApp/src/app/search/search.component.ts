@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SearchComponent {
 
-  searchText:string = `Women's Watch`
+  searchText:string = ``
   
   updateSearch(event:any){
     this.searchText = event.target.value

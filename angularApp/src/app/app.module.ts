@@ -10,6 +10,8 @@ import { BindingPracticeComponent } from './binding-practice/binding-practice.co
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductComponent } from './product/product.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ProductListComponent } from './product-list/product-list.component';
     BindingPracticeComponent,
     SearchComponent,
     ProductListComponent,
+    ProductComponent,
+    FilterComponent,
     
   ],
   imports: [

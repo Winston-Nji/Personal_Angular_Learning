@@ -2,11 +2,11 @@
 
     <form action="">
         <input name="searchText"  type="text" [(ngModel)]="searchText">
-        <button>Search</button>
+        <button [disabled]="!searchText" >Search</button>
     </form>
         
 
-   <div class="displaySearchMsg">
+   <div class="displaySearchMsg" *ngIf="searchText">
         <p>Search results for: {{searchText}}</p>
    </div>
 </div>

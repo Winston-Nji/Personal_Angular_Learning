@@ -1,8 +1,8 @@
 <div class="searchDiv">
 
     <form action="">
-        <input name="searchText"  type="text" [(ngModel)]="searchText">
-        <button [disabled]="!searchText" >Search</button>
+        <input name="searchText"  type="text"  #searchText>
+        <button (click)="setSearchText(searchText)" >Search</button>
     </form>
         
 

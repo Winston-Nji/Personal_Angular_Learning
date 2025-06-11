@@ -3,14 +3,18 @@
     [inStockLength]="inStock" 
     [outOfStock]="outOfStock"
     (selectedRadioEmitter) = 'onChange($event)'
-
     >
 </app-filter>
 
 <div class="ekart--products--container">
     <div *ngFor="let product of products">
-        <app-product [product]="product" *ngIf="selectedRadio == 'all' || selectedRadio == product.is_in_inventory.toString() " ></app-product>
+        <!-- selectedRadio == 'all' || selectedRadio == product.is_in_inventory.toString() ||  -->
+        <app-product [product]="product" *ngIf="product.name.includes(searchText)  " ></app-product>
     </div>
+
+    <h1>No products found</h1>
+
+    
     
 </div>
 

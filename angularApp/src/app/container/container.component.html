@@ -1,1 +1,7 @@
-<p>container works!</p>
+<app-search
+    (searchEmmiter)='onSearchTextChange($event)'
+></app-search>
+
+<app-product-list
+    [searchText] = 'searchText'
+></app-product-list>

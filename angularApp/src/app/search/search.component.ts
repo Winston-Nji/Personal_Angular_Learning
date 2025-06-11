@@ -9,7 +9,7 @@ export class SearchComponent {
 
   searchText:string = ``
   
-  updateSearch(event:any){
-    this.searchText = event.target.value
-  }
+  // updateSearch(event:any){
+  //   this.searchText = event.target.value
+  // }
 }

@@ -534,6 +534,14 @@ export class ProductListComponent {
   ];
 
   totalProducts:number = this.products.length
+
   inStock: number = this.products.filter(p => p.is_in_inventory === true).length
+
   outOfStock: number = this.products.filter(p => p.is_in_inventory === false).length
+
+  selectedRadio:string = 'all'
+
+  onChange(value:string){
+    this.selectedRadio = value
+  }
 }

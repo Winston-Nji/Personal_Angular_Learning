@@ -7,12 +7,17 @@
 </app-filter>
 
 <div class="ekart--products--container">
-    <div *ngFor="let product of products" (click)="singleProduct = product">
-        <!-- selectedRadio == 'all' || selectedRadio == product.is_in_inventory.toString() ||  -->
-        <app-product [product]="product" *ngIf="product.name.includes(searchText)  " ></app-product>
+    <div *ngIf="filteredProducts().length > 0; else notFound">
+        <div *ngFor="let product of products" (click)="singleProduct = product">
+            <!-- selectedRadio == 'all' || selectedRadio == product.is_in_inventory.toString() ||  -->
+            <app-product [product]="product" *ngIf="product.name.toLowerCase().includes(searchText.toLowerCase()); "  ></app-product>
+        </div>
     </div>
-
     
+
+    <ng-template #notFound>
+        <h1>Product Not Found</h1>
+    </ng-template>
     
 </div>
 

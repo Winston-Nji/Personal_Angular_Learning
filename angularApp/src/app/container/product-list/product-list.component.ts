@@ -551,4 +551,8 @@ export class ProductListComponent {
 
   @Input() searchText:string
 
+  filteredProducts(){
+    return this.products.filter(p => p.name.toLowerCase().includes(this.searchText.toLowerCase()))
+  }
+
 }

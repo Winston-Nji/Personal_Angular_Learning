@@ -19,4 +19,9 @@ export class SearchComponent {
   onSearchTextChange(){
     this.searchEmmiter.emit(this.searchText)
   }
+
+  setSearchText(value: string){
+    this.searchEmmiter.emit(value)
+    this.searchText = value
+  }
 }

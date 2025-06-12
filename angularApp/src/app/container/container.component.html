@@ -4,4 +4,7 @@
 
 <app-product-list
     [searchText] = 'searchText'
+    #ProductListComponent
 ></app-product-list>
+
+<app-product-detail *ngIf="ProductListComponent.singleProduct"  [productList]="singleProduct" ></app-product-detail>

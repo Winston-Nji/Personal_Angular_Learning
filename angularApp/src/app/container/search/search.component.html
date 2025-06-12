@@ -1,12 +1,12 @@
 <div class="searchDiv">
 
     <form action="">
-        <input name="searchText"  type="text"  #searchText>
-        <button (click)="setSearchText(searchText)" >Search</button>
+        <input name="searchText"  type="text" #searchText>
+        <button (click)="setSearchText(searchText.value)" >Search</button>
     </form>
         
 
-   <div class="displaySearchMsg" *ngIf="searchText">
-        <p>Search results for: {{searchText}}</p>
+   <div class="displaySearchMsg"  >
+        <p *ngIf="searchText.value != '' " >Search results for: {{searchText.value}}</p>
    </div>
 </div>

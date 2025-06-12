@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
+import { Product } from '../Model/Product';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @Component({
   selector: 'app-container',
@@ -11,6 +14,16 @@ export class ContainerComponent {
 
     onSearchTextChange(value:string){
       this.searchText = value
+  }
+
+  @ViewChild(ProductListComponent) productList:ProductListComponent
+
+  singleProduct:ProductListComponent
+
+    ngAfterViewInit() {
+      this.singleProduct = this.productList
+
+      console.log(this.productList, 'singleProd')
   }
 
 }

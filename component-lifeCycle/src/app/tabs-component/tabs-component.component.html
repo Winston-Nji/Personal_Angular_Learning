@@ -1,0 +1,25 @@
+<!-- Tab buttons -->
+<div class="tab-buttons" >
+  <button (click)="navigateToInformation()" >Information</button>
+  <button (click)="navigateToService()">Services</button>
+  <button (click)="navigateToPolicy()">Policy</button>
+</div>
+
+<!-- Tab content using ngSwitch -->
+<div [ngSwitch]="tab">
+    <div class="tab-content" *ngSwitchDefault>
+        <h3>Information</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque iusto, nesciunt fugit eligendi in eum debitis maxime, aspernatur quae placeat aliquam nobis quod deserunt quos officia at quisquam? Id maxime, magni ipsa vitae, cumque consequatur, animi cum ea nulla earum quod hic temporibus totam. Placeat est, asperiores, quis ipsa dolor amet unde nemo quam molestiae accusamus iusto voluptas nisi ad aliquid natus et tenetur aperiam veniam laborum nesciunt deserunt iste? Aspernatur itaque dignissimos consequatur!</p>
+    </div>
+
+    <div class="tab-content" *ngSwitchCase="'services'">
+        <h3>Services</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque iusto, nesciunt fugit eligendi in eum debitis maxime, aspernatur quae placeat aliquam nobis quod deserunt quos officia at quisquam? Id maxime, magni ipsa vitae, cumque consequatur, animi cum ea nulla earum quod hic temporibus totam. Placeat est, asperiores, quis ipsa dolor amet unde nemo quam molestiae accusamus iusto voluptas nisi ad aliquid natus et tenetur aperiam veniam laborum nesciunt deserunt iste? Aspernatur itaque dignissimos consequatur!</p>
+    </div>
+
+    <div class="tab-content" *ngSwitchCase="'policy'">
+        <h3>Policy</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque iusto, nesciunt fugit eligendi in eum debitis maxime, aspernatur quae placeat aliquam nobis quod deserunt quos officia at quisquam? Id maxime, magni ipsa vitae, cumque consequatur, animi cum ea nulla earum quod hic temporibus totam. Placeat est, asperiores, quis ipsa dolor amet unde nemo quam molestiae accusamus iusto voluptas nisi ad aliquid natus et tenetur aperiam veniam laborum nesciunt deserunt iste? Aspernatur itaque dignissimos consequatur!</p>
+    </div>
+
+</div>

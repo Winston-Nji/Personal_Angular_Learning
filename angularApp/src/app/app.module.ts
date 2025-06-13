@@ -13,6 +13,7 @@ import { ProductComponent } from './container/product/product.component';
 import { FilterComponent } from './container/filter/filter.component';
 import { ContainerComponent } from './container/container.component';
 import { ProductDetailComponent } from './container/product-detail/product-detail.component';
+import { setBackground } from './container/CustomDirectives/setBackground.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProductDetailComponent } from './container/product-detail/product-detai
     FilterComponent,
     ContainerComponent,
     ProductDetailComponent,
+    setBackground
     
   ],
   imports: [

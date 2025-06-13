@@ -1,0 +1,50 @@
+.admin-user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-user-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.admin-user-detail:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-user-name,
+.admin-user-gender,
+.admin-user-subtype,
+.admin-user-active {
+  font-size: 0.95rem;
+  color: #34495e;
+  font-weight: 500;
+  margin-right: 1.5rem;
+  flex: 1;
+}
+
+.admin-user-show-detail-button {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.admin-user-show-detail-button:hover {
+  background-color: #27ae60;
+}

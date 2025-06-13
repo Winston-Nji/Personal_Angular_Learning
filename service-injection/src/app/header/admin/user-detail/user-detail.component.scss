@@ -1,0 +1,40 @@
+.user-detail-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  max-width: 600px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-detail-avatar-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #3498db;
+}
+
+.user-detail-info {
+  flex: 1;
+}
+
+.user-detail-info h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.user-detail-info p {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.user-detail-info b {
+  color: #2c3e50;
+}

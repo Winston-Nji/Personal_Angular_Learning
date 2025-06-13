@@ -14,7 +14,7 @@ export class TabsComponentComponent {
     }
 
     navigateToService(){
-    this.tab = "services"
+    this.tab = "service"
   }
 
   navigateToPolicy(){

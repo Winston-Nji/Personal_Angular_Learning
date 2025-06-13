@@ -1,0 +1,41 @@
+<div class="admin-container">
+  <h2>Add New User</h2>
+  <div class="admin-add-user">
+    <div class="form-group">
+      <label for="name">User Name</label>
+      <input id="name" type="text" placeholder="Enter name" [(ngModel)]="name">
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" [(ngModel)]="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="subType">Subscription Type</label>
+      <select id="subType" [(ngModel)]="subType">
+        <option value="Monthly">Monthly</option>
+        <option value="Quaterly">Quaterly</option>
+        <option value="Yearly">Yearly</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select id="status" [(ngModel)]="status">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+    </div>
+
+    <button class="admin-button">Create</button>
+  </div>
+
+  
+    <app-user-list></app-user-list> <br>
+    <app-user-detail></app-user-detail>
+  
+</div>

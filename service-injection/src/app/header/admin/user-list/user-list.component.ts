@@ -1,4 +1,6 @@
 import { Component, Inject } from '@angular/core';
+import { UserService } from '../../Services/User.services';
+import { UserModel } from '../../models/user.model';
 
 @Component({
   selector: 'app-user-list',
@@ -7,4 +9,17 @@ import { Component, Inject } from '@angular/core';
 })
 export class UserListComponent {
 
+  usersList:any
+
+  constructor(private users:UserService){
+
+  }
+
+  ngAfterViewInit(){
+    this.usersList = this.users.getAllUsers()
+  }
+
+  viewUser(user:UserModel){
+    this.users.onUserDetailClickedEmit(user)
+  }
 }

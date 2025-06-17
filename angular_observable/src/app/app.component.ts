@@ -23,34 +23,44 @@ export class AppComponent{
 
 
 
-  promiseData = new Promise ((resolve, reject)=> {
-    resolve([1,2,3,4,5,5])
+  // promiseData = new Promise ((resolve, reject)=> {
+  //   resolve([1,2,3,4,5,5])
+  // })
+
+
+  // myObservable:any = from([1,2,3,4,5,6]).pipe(
+  //   map((value:number) => value * 10), 
+  //   filter((value:number) => value % 4 == 0)
+  // )
+
+  // getData(){
+
+  //   this.data=[]
+
+  //   this.myObservable.subscribe({
+  //     next: (value:any) => {
+  //       this.data.push(value)
+  //       console.log('done')
+  //     },
+  //     error(){
+  //       console.log("err")
+  //     },
+  //     complete(){
+  //       alert('data fetched succesfully')
+  //     }
+  //   })
+
+  // }
+
+  promise = new Promise((resolve,reject) => {
+    console.log('Promise is called')
+    resolve(100)
   })
 
+  obs = new Observable((observer) => {
+    observer.next('Observable called')
+  })
 
-  myObservable:any = from([1,2,3,4,5,6]).pipe(
-    map((value:number) => value * 10), 
-    filter((value:number) => value % 4 == 0)
-  )
-
-  getData(){
-
-    this.data=[]
-
-    this.myObservable.subscribe({
-      next: (value:any) => {
-        this.data.push(value)
-        console.log('done')
-      },
-      error(){
-        console.log("err")
-      },
-      complete(){
-        alert('data fetched succesfully')
-      }
-    })
-
-  }
-
+  
 
 }

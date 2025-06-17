@@ -11,7 +11,8 @@ export class UserDetailComponent {
 
   selectedUser: UserModel;
 
-  userService = inject(UserService);
+  constructor(private userService:UserService){
+  }
 
   ngOnInit() {
     this.userService.userServiceEmitter.subscribe((data: UserModel) => {

@@ -19,6 +19,7 @@ export class UserListComponent {
     this.usersList = this.users.getAllUsers()
   }
 
+  // Click event on template
   viewUser(user:UserModel){
     this.users.onUserDetailClickedEmit(user)
   }

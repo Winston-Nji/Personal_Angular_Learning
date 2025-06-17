@@ -8,13 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { ShowTaskComponent } from './show-task/show-task.component';
 import { TaskService } from './Services/task.service';
 import { SubjectComponent } from './subject/subject.component';
+import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewTaskComponent,
     ShowTaskComponent,
-    SubjectComponent
+    SubjectComponent,
+    UnsubscribeComponent
   ],
   imports: [
     BrowserModule,

@@ -13,16 +13,21 @@ export class CourseDetailComponent{
   selectedCourse:Course
   courseId:number
 
-  courseService: CourseService = inject(CourseService)
-  activeRoute: ActivatedRoute = inject(ActivatedRoute)
+  courseService = inject(CourseService)
+  activeRoute = inject(ActivatedRoute)
 
   ngOnInit(){
-    // this.courseId = this.activeRoute.snapshot.params['id']
+    
+    // this.courseId = Number(this.activeRoute.snapshot.paramMap.get('id'))
 
-    this.courseId = Number(this.activeRoute.snapshot.paramMap.get('id'))
-    console.log(this.courseId)
+    this.activeRoute.paramMap.subscribe(data => this.courseId = Number(data.get('id')))
 
     this.selectedCourse = this.courseService.courses.find(course => course.id === this.courseId)
+
+    console.log(this.selectedCourse)
+
+    
+  
   }
 
 }

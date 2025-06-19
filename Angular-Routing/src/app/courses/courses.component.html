@@ -7,8 +7,9 @@
     <div class="courses-page-all-courses">
         <h2>Choose the course best suits you</h2>
         <hr>
-        <div class="courses-page-course-list">
-            <div class="course-card" *ngFor="let course of AllCourses">
+        
+        <div class="courses-page-course-list" *ngIf="AllCourses.length > 0; else notFound" >
+            <div class="course-card" *ngFor="let course of AllCourses" >
                 <div class="course-image">
                     <img [src]="course.image">
                 </div>
@@ -23,10 +24,17 @@
                     <div class="course-rating"><b>RATINGS:</b> {{ course.rating }}</div>
                 </div>
                 <div class="course-action-buttons">
-                    <button class="btn">BUY NOW</button>
-                    <button class="btn">DETAILS</button>
+                    <button class="btn"  >BUY NOW</button>
+                    <button class="btn" [routerLink]="'/Courses/Course/' + course.id" >DETAILS</button>
                 </div>
             </div>
         </div>
+
+    
+        <ng-template #notFound>
+            <h1>Course not found</h1>
+            <button (click)="returnToHome()" >Return to Home Page</button>
+        </ng-template>
+            
     </div>
 </div>

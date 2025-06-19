@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Course } from '../Models/course';
 import { CourseService } from '../Services/course.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -9,5 +10,27 @@ import { CourseService } from '../Services/course.service';
 })
 export class CoursesComponent {
   coursesService = inject(CourseService);
-  AllCourses: Course[] = this.coursesService.courses;
+  AllCourses: Course[]
+
+  router = inject(Router)
+  activeRoute = inject(ActivatedRoute)
+  searchQuery:string
+
+  ngOnInit(){
+    this.searchQuery = this.activeRoute.snapshot.queryParams['search']
+
+    console.log(this.searchQuery)
+
+    if(this.searchQuery === undefined){
+      this.AllCourses = this.coursesService.courses;
+    }else{
+      this.AllCourses = this.coursesService.courses.filter(course => course.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
+    }
+
+    console.log(this.AllCourses)
+  }
+
+  returnToHome(){
+    this.router.navigate(['Home'])
+  }
 }

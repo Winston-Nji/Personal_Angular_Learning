@@ -21,6 +21,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from './Services/auth.service';
 
 const routes: Routes = [
  
@@ -33,7 +34,7 @@ const routes: Routes = [
   {path: 'Courses', children:[
     {path: 'Course/:id', component:CourseDetailComponent }
   ]},
-   {path:'**', component: NotFoundComponent},
+  {path:'**', component: NotFoundComponent},
 ]
 
 
@@ -62,7 +63,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ServicesService, CourseService],
+  providers: [ServicesService, CourseService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

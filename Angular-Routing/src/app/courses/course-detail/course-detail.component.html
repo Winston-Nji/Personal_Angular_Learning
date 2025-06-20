@@ -1,5 +1,5 @@
 <div class="courses-detail-main-container">
-    <div class="course-detail-container">
+    <div class="course-detail-container" *ngIf="selectedCourse !== undefined; else notFound">
         <div class="course-details">
             <div class="course-banner">
                 <img [src]= "selectedCourse.image" class="course-banner-image">
@@ -85,5 +85,11 @@
                 <button class="subscribe-course-button">Start subscription</button>
             </div>
         </div>
-    </div>    
+    </div>   
+    
+    <ng-template #notFound>
+        <h1>Course not found</h1>
+
+        <button routerLink="/Courses" >Return to Course Page</button>
+    </ng-template>
 </div>

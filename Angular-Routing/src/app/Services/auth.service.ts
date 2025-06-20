@@ -17,8 +17,9 @@ export class AuthService{
             this.isLogged = false
         }else{
             this.isLogged = true
-            // return user;
         }
+
+        return user;
     }
 
     logout(){

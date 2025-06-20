@@ -12,7 +12,9 @@ export class BannerComponent {
   router = inject(Router)
 
   searchCourse(value:string){
-    this.router.navigate(['Courses'], {queryParams: {search:value}})
+    // 
+    this.router.navigate(['Courses'], {queryParams : {search : value}})
+
   }
 
 }

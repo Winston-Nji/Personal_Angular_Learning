@@ -17,9 +17,7 @@ export class CoursesComponent {
   searchQuery:string
 
   ngOnInit(){
-    this.searchQuery = this.activeRoute.snapshot.queryParams['search']
-
-    console.log(this.searchQuery)
+    this.activeRoute.queryParams.subscribe(data =>  this.searchQuery =  data['search'])
 
     if(this.searchQuery === undefined){
       this.AllCourses = this.coursesService.courses;

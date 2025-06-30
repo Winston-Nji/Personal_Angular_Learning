@@ -10,7 +10,7 @@ export class AuthService{
 
     login(username:string, password:string){
         let user = this.userService.users.find(
-            user => user.name === username && user.password === password
+            user => user.username === username && user.password === password
         )
 
         if(user === undefined){
@@ -29,4 +29,6 @@ export class AuthService{
     isAuthenticated(){
         return this.isLogged
     }
+
+    
 }

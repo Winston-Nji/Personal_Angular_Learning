@@ -7,6 +7,8 @@
     <div class="courses-page-all-courses">
         <h2>Choose the course best suits you</h2>
         <hr>
+
+        <router-outlet></router-outlet>
         
         <div class="courses-page-course-list" *ngIf="AllCourses.length > 0; else notFound" >
             <div class="course-card" *ngFor="let course of AllCourses" >
@@ -24,11 +26,13 @@
                     <div class="course-rating"><b>RATINGS:</b> {{ course.rating }}</div>
                 </div>
                 <div class="course-action-buttons">
-                    <button class="btn"  >BUY NOW</button>
+                    <button class="btn"  routerLink="/Courses/Checkout"  >BUY NOW</button>
                     <button class="btn" [routerLink]="'/Courses/Course/' + course.id" >DETAILS</button>
                 </div>
             </div>
         </div>
+
+        
 
     
         <ng-template #notFound>

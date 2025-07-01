@@ -10,6 +10,9 @@ import { HTTPRequest } from '../Services/httpRequests.service';
 })
 export class DashboardComponent{
   showCreateTaskForm: boolean = false;
+  editMode:boolean = false
+  selectedTask: any
+  currentTaskId : string = ''
 
   http:HttpClient = inject(HttpClient)
 
@@ -23,16 +26,27 @@ export class DashboardComponent{
 
   OpenCreateTaskForm(){
     this.showCreateTaskForm = true;
+    this.editMode = false
+    this.selectedTask = {title: '', desc: '', assingedTo:'', createdAt: '', priority:'', status:''}
   }
 
   CloseCreateTaskForm(){
     this.showCreateTaskForm = false;
   }
 
-  CreateTask(data:any){
-    this.taskService.CreateTask(data).subscribe((_) => {
-          this.fetchAllTasks()
-        })
+  CreateOrUpdateTask(data:any){
+    if(!this.editMode){
+      this.taskService.CreateTask(data).subscribe((_) => {
+            this.fetchAllTasks()
+          })
+    }else{
+      console.log(this.currentTaskId)
+      console.log(data, 'updated task ')
+
+      this.taskService.updateTask(this.currentTaskId, data).
+      subscribe(() => {this.fetchAllTasks()});
+
+    }
     
   }
 
@@ -61,8 +75,16 @@ export class DashboardComponent{
     this.allTasks = this.allTasks.filter((task) => task.id !== id )
     
     this.taskService.deleteTask(id)
-
   }
+
+  onEditTaskClicked(id:string){
+    this.showCreateTaskForm = true
+    this.editMode = true
+
+    this.selectedTask = this.allTasks.find((task) =>  task.id === id)
+
+    this.currentTaskId = id
+  } 
 
   
 }

@@ -40,4 +40,8 @@ export class HTTPRequest{
             }
         ))
     }
+
+    updateTask(id:string, data:any){
+        return this.http.put('https://angular-http-tutorial-2377a-default-rtdb.firebaseio.com/tasks/' + id + '.json', data)
+    }
 }

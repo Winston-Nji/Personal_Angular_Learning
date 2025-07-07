@@ -1,3 +1,5 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,6 +12,8 @@ import { TaskDetailsComponent } from './dashboard/task-details/task-details.comp
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './Services/auth-interceptor.service';
+import { LoginInterceptor } from './Services/login-interceptor.services';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,19 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: AuthInterceptor, 
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: LoginInterceptor, 
+      multi: true
+    }
+      
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

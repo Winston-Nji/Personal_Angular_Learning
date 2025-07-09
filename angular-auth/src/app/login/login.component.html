@@ -1,0 +1,40 @@
+<div class="app-login-form">
+    <h1 *ngIf="errorMessage">Error: {{ errorMessage}}</h1>
+    <h2>{{isLogedIn ? 'Login' : 'Register'}}</h2>
+    <form #authForm="ngForm" (submit)="FormSubmitted(authForm)" >
+        <div class="form-input">
+            <label>Email Address</label>
+            <input type="email" 
+                placeholder="Email address"
+                name="email"
+                ngModel
+                >
+        </div>
+        <div class="form-input">
+            <label>Password</label>
+            <input type="password" 
+                placeholder="Password"
+                name="password"
+                ngModel
+                required>
+        </div>  
+        
+        <button 
+            type="submit" 
+            class="app-login-btn"
+            [disabled]="authForm.invalid"
+            >
+            
+        {{isLogedIn ? 'Login' : 'Sign-Up'}}</button>
+
+        <p>Do not have an accout yet? 
+            <button 
+                type="button" 
+                class="app-toggle-btn"
+                (click)="toggleLogIn()">
+                
+                {{isLogedIn ? 'Register Here' : 'Login'}}
+            </button>
+        </p>
+    </form>
+</div>

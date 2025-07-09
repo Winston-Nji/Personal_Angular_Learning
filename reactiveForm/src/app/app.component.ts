@@ -58,7 +58,6 @@ export class AppComponent {
 
   deleteSkill(index:number){
     const controls = this.reactiveForm.get('skills') as FormArray
-    console.log(controls, 'controls')
     controls.removeAt(index)
   }
 

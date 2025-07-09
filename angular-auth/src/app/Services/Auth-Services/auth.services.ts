@@ -38,7 +38,11 @@ export class AuthServices{
 
         const expiresIn = new Date(expiresInTs)
 
+        console.log(res.expiresIn,  expiresInTs, expiresIn)
+
         const user = new User(res.email, res.localId, res.idToken, expiresIn )
+
+        console.log(user, 'user')
             
         this.userSubject.next(user)
     }

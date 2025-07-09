@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { AuthServices } from '../Services/Auth-Services/auth.services';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '../Model/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent {
   isLogedIn:boolean = true 
   authService = inject(AuthServices)
   errorMessage : string = null
+  router = inject(Router)
 
   toggleLogIn(){
     console.log('clicked')
@@ -29,7 +31,7 @@ export class LoginComponent {
         this.authService.login(email,password).subscribe({
           next: (response) => {
             console.log(response)
-
+            this.router.navigate(['/dashboard'])
           },
           error: (err) => {
             this.errorHandlerFunction(err)

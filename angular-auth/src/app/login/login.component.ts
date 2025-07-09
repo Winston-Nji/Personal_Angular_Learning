@@ -29,8 +29,6 @@ export class LoginComponent {
         this.authService.login(email,password).subscribe({
           next: (response) => {
             console.log(response)
-            
-            new User(response.email, response.passowrd, response.token, response.expiresIn )
 
           },
           error: (err) => {

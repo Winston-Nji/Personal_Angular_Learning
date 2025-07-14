@@ -24,4 +24,8 @@ export class HeaderComponent {
   ngOnDestroy(){
     this.userSubject.unsubscribe()
   }
+
+  onLogOut(){
+    this.authService.logout()
+  }
 }

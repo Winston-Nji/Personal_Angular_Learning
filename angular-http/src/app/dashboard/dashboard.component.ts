@@ -59,9 +59,6 @@ export class DashboardComponent{
             this.fetchAllTasks()
           })
     }else{
-       (this.currentTaskId)
-       (data, 'updated task ')
-
       this.taskService.updateTask(this.currentTaskId, data).
       subscribe(() => {this.fetchAllTasks()});
 

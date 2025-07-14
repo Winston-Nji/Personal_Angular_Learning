@@ -16,22 +16,27 @@ export class CourseDetailComponent{
   courseService = inject(CourseService)
   activeRoute = inject(ActivatedRoute)
 
-  ngOnInit(){
+  // ngOnInit(){
     
-    // // this.courseId = Number(this.activeRoute.snapshot.paramMap.get('id'))
+  //   // // this.courseId = Number(this.activeRoute.snapshot.paramMap.get('id'))
 
-    // this.activeRoute.paramMap.subscribe(data => this.courseId = Number(data.get('id')))
+  //   // this.activeRoute.paramMap.subscribe(data => this.courseId = Number(data.get('id')))
 
-    // this.selectedCourse = this.courseService.courses.find(course => course.id === this.courseId)
+  //   // this.selectedCourse = this.courseService.courses.find(course => course.id === this.courseId)
 
-    //  (this.selectedCourse)
+  //   //  (this.selectedCourse)
+    
 
-    this.activeRoute.paramMap.subscribe(data => this.courseId = Number(data.get('id')))  
-
-    this.selectedCourse = this.courseService.courses.find(course => course.id === this.courseId)
-
-     (this.selectedCourse, 'selectedCourse')
   
-  }
+  // }
+
+  ngOnInit() {
+    this.activeRoute.paramMap.subscribe(data => {
+      this.courseId = Number(data.get('id'));
+      this.selectedCourse = this.courseService.courses.find(course => course.id === this.courseId);
+      console.log(this.selectedCourse, 'selectedCourse');
+    });
+}
+
 
 }

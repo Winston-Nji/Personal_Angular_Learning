@@ -23,7 +23,6 @@ export class AuthGuard implements  CanActivateChild {
 
     canActivateChild(){
         if(this.authService.isAuthenticated()){
-             (this.authService.isAuthenticated())
             return true
         }else{
             return false

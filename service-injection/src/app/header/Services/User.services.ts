@@ -17,7 +17,7 @@ export class UserService {
     createNewUser(name: string, gender: string, subType: string, status: string): void {
         const newUser: UserModel = { name, gender, subType, status };
         this.users.push(newUser);
-        console.log('User added:', newUser);
+         ('User added:', newUser);
     }
 
     userServiceEmitter: EventEmitter<UserModel> = new EventEmitter<UserModel>()

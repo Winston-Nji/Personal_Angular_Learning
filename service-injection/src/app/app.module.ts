@@ -39,7 +39,7 @@ export class AppModule {
 
   // constructor(private http: HttpClient){
   //       this.http.get('https://jsonplaceholder.typicode.com/users').subscribe(data => {
-  //       console.log(data);
+  //        (data);
   //       });
   //   }
 }

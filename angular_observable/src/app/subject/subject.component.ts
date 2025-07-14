@@ -18,11 +18,11 @@ export class SubjectComponent {
   //   const subject  = new BehaviorSubject <number>(100)
 
   //   // Sub1
-  //   subject.subscribe((data) => {console.log(data)})
+  //   subject.subscribe((data) => { (data)})
 
 
   //   // Sub2
-  //   subject.subscribe((data) => {console.log(data)})
+  //   subject.subscribe((data) => { (data)})
 
   //   subject.next(200)
   // }

@@ -12,7 +12,7 @@ export class TaskDetailsComponent implements OnInit {
   @Output() closeDetailTask = new EventEmitter<boolean>()
 
   showDetailTask(){
-    console.log(this.task)
+     (this.task)
   }
 
   ngOnInit(){
@@ -21,7 +21,7 @@ export class TaskDetailsComponent implements OnInit {
 
   closeDetailedView(){
     this.closeDetailTask.emit(true)
-    console.log('emmited')
+     ('emmited')
   }
 
   

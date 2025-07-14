@@ -17,8 +17,8 @@ const doesUserNameExist = (userName:string) => {
     const userNames = ['johnSmith', 'Steve', 'Margot', 'Alex']
 
     return new Promise((resolve,_) => {
-        console.log(userNames)
-        console.log(userName)
+         (userNames)
+         (userName)
         
         setTimeout(() => {
             if(userNames.includes(userName)){

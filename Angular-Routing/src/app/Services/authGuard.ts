@@ -6,7 +6,7 @@ export const AuthGuardFunction = () =>{
     const authService = inject(AuthService)
 
     if(authService.isAuthenticated()){
-            console.log(  authService.isAuthenticated())
+             (  authService.isAuthenticated())
             return true
         }else{
             return false

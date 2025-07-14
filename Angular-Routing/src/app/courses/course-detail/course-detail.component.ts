@@ -24,13 +24,13 @@ export class CourseDetailComponent{
 
     // this.selectedCourse = this.courseService.courses.find(course => course.id === this.courseId)
 
-    // console.log(this.selectedCourse)
+    //  (this.selectedCourse)
 
     this.activeRoute.paramMap.subscribe(data => this.courseId = Number(data.get('id')))  
 
     this.selectedCourse = this.courseService.courses.find(course => course.id === this.courseId)
 
-    console.log(this.selectedCourse, 'selectedCourse')
+     (this.selectedCourse, 'selectedCourse')
   
   }
 

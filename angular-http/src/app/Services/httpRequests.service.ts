@@ -22,7 +22,7 @@ export class HTTPRequest{
         this.http.delete('https://angular-http-tutorial-2377a-default-rtdb.firebaseio.com/tasks/' + id + '.json').subscribe(
             { 
                 next: (response ) => {
-                console.log(response)
+                 (response)
                 },
 
                 error: (err) => {

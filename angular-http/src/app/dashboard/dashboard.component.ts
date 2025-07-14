@@ -59,8 +59,8 @@ export class DashboardComponent{
             this.fetchAllTasks()
           })
     }else{
-      console.log(this.currentTaskId)
-      console.log(data, 'updated task ')
+       (this.currentTaskId)
+       (data, 'updated task ')
 
       this.taskService.updateTask(this.currentTaskId, data).
       subscribe(() => {this.fetchAllTasks()});
@@ -85,7 +85,7 @@ export class DashboardComponent{
   }
 
   private setErrorMessage(err: HttpErrorResponse){
-    console.log(err.error.error === '404 Not Found')
+     (err.error.error === '404 Not Found')
 
     if(err.error.error === '404 Not Found'){
       this.errorMessage = 'Page Not Found'

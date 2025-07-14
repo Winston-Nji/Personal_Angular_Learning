@@ -14,7 +14,7 @@ export class AuthGuard implements  CanActivateChild {
     // canActivate(route: ActivatedRouteSnapshot, state:RouterStateSnapshot):boolean{
 
     //     if(this.authService.isAuthenticated()){
-    //         console.log(this.authService.isAuthenticated())
+    //          (this.authService.isAuthenticated())
     //         return true
     //     }else{
     //         return false
@@ -23,7 +23,7 @@ export class AuthGuard implements  CanActivateChild {
 
     canActivateChild(){
         if(this.authService.isAuthenticated()){
-            console.log(this.authService.isAuthenticated())
+             (this.authService.isAuthenticated())
             return true
         }else{
             return false

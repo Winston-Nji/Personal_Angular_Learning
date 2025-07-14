@@ -17,7 +17,7 @@ export class UserDetailComponent {
   ngOnInit() {
     this.userService.userServiceEmitter.subscribe((data: UserModel) => {
       this.selectedUser = data;
-      console.log(this.selectedUser, 'selectedUser');
+       (this.selectedUser, 'selectedUser');
     });
   }
 }

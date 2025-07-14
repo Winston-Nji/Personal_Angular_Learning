@@ -25,7 +25,7 @@ export class CoursesComponent {
       this.AllCourses = this.coursesService.courses.filter(course => course.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
     }
 
-    console.log(this.AllCourses)
+     (this.AllCourses)
   }
 
   returnToHome(){

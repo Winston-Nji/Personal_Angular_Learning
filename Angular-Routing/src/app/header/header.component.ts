@@ -18,7 +18,7 @@ activeRoute: ActivatedRoute = inject(ActivatedRoute)
   ngOnInit(){
     this.activeRoute.fragment.subscribe((data) => {
       this.jumpTo(data)
-      console.log(data)
+       (data)
     })
   }
 

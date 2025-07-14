@@ -47,8 +47,8 @@ export class AppComponent {
   }
 
   OnFormSubmitted(){
-    console.log('clicked')
-    console.log(this.reactiveForm, 'reavtieForm')
+     ('clicked')
+     (this.reactiveForm, 'reavtieForm')
     this.formData = this.reactiveForm.value
   }
 
@@ -83,7 +83,7 @@ export class AppComponent {
       const firstName:String = this.reactiveForm.get('firstname').value
       const lastName:String = this.reactiveForm.get('lastname').value
       const dob:Number = new Date(this.reactiveForm.get('dob').value).getFullYear()
-      console.log(firstName.slice(0,3), lastName, dob)
+       (firstName.slice(0,3), lastName, dob)
 
       this.userName +=  firstName.slice(0,3) +  lastName.slice(0,3) +  this.userName + dob
 

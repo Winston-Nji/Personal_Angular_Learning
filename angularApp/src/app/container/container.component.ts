@@ -23,7 +23,7 @@ export class ContainerComponent {
     ngAfterViewInit() {
       this.singleProduct = this.productList
 
-      console.log(this.productList, 'singleProd')
+       (this.productList, 'singleProd')
   }
 
 }

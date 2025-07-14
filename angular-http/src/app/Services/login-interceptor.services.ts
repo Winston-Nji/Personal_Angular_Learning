@@ -11,7 +11,7 @@ export class LoginInterceptor {
         return next.handle(modifiedReq).pipe(tap(
             (event) => {
                 if(event.type == HttpEventType.Response){
-                    console.log('Login Interceptor fired')
+                     ('Login Interceptor fired')
                 }
             }
         ))

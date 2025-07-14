@@ -30,7 +30,7 @@ export class CreateTaskComponent {
   @ViewChild('taskForm') taskForm: any
 
   ngAfterViewInit(){
-    console.log(this.taskForm)
+     (this.taskForm)
     setTimeout(() => {
       this.taskForm.form.patchValue(this.selectedTask) 
     }, 0)
@@ -44,6 +44,6 @@ export class CreateTaskComponent {
   OnFormSubmitted(form: NgForm){
     this.CloseForm.emit(false)
     this.EmitTaskData.emit(form.value)
-    console.log(form.value, 'updated')
+     (form.value, 'updated')
   }
 }

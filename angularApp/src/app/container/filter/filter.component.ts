@@ -19,7 +19,7 @@ export class FilterComponent {
 
   
   changeSelectedRadio(){
-    console.log(this.selectedRadio)
+     (this.selectedRadio)
     this.selectedRadioEmitter.emit(this.selectedRadio)
   }
 }

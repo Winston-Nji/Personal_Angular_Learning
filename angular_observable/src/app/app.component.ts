@@ -40,10 +40,10 @@ export class AppComponent{
   //   this.myObservable.subscribe({
   //     next: (value:any) => {
   //       this.data.push(value)
-  //       console.log('done')
+  //        ('done')
   //     },
   //     error(){
-  //       console.log("err")
+  //        ("err")
   //     },
   //     complete(){
   //       alert('data fetched succesfully')
@@ -53,7 +53,7 @@ export class AppComponent{
   // }
 
   promise = new Promise((resolve,reject) => {
-    console.log('Promise is called')
+     ('Promise is called')
     resolve(100)
   })
 

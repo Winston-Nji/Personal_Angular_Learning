@@ -18,19 +18,19 @@ export class LoginComponent {
   router = inject(Router)
 
   toggleLogIn(){
-    console.log('clicked')
+    
     this.isLogedIn = !this.isLogedIn
   }
 
   FormSubmitted(form: NgForm){
-    console.log(form.value)
+     (form.value)
     const email = form.value.email
     const password = form.value.password
 
     if(this.isLogedIn){
         this.authService.login(email,password).subscribe({
           next: (response) => {
-            console.log(response)
+            
             this.router.navigate(['/dashboard'])
           },
           error: (err) => {
@@ -40,7 +40,6 @@ export class LoginComponent {
     }else{
       this.authService.signUp(email, password).subscribe({
         next: (response) => {
-          console.log(response)
         },
         error: (err) => {
           this.errorHandlerFunction(err)
@@ -54,7 +53,7 @@ export class LoginComponent {
 
   private errorHandlerFunction(err: HttpErrorResponse){
     
-    console.log(err.error.error.message)
+     (err.error.error.message)
     
     switch(err.error.error.message){
       case('EMAIL_EXISTS') : 

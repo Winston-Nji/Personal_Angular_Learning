@@ -8,7 +8,7 @@ export class AuthInterceptor implements HttpInterceptor{
 
         return next.handle(modifiedResponse).pipe(tap((event) => {
             if(event.type == HttpEventType.Response){
-                console.log('Response successfully intercepted')
+                 ('Response successfully intercepted')
             }
         }))
     }

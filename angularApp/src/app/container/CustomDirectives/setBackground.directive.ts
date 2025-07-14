@@ -9,7 +9,7 @@ export class setBackground{
     }
 
     ngOnInit(){
-        // console.log(this.element)
+        //  (this.element)
         // this.element.nativeElement.style.backgroundColor = 'red'
 
         this.renderer.setStyle(this.element.nativeElement, 'backgroundColor', 'yellow')

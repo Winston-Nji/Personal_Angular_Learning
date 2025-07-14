@@ -14,7 +14,7 @@ export class LoggingService{
     fetcherrors(){
         this.http.get('https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/log.json')
         .subscribe((data) => {
-            console.log(data);
+             (data);
         })
     }
 }

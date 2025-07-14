@@ -33,8 +33,8 @@ import { LoginComponent } from './login/login.component';
     RouteModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptorService, multi: true}
+    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
+    // {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

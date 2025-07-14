@@ -11,25 +11,25 @@ export class DemoComponent {
   @Input() searchText:string = 'hello'
 
   constructor(){
-    console.log('Demo component initiated')
-    console.log(this.title)
-    console.log(this.searchText)
+     ('Demo component initiated')
+     (this.title)
+     (this.searchText)
   }
 
   ngOnChanges(changes: SimpleChanges){
-    console.log('ng OnChanges has been called')
-    // console.log(changes)
+     ('ng OnChanges has been called')
+    //  (changes)
   
   }
 
   ngOnInit(){
-    console.log("ngOnitCalled")
+     ("ngOnitCalled")
     // this.searchText = 'No value yet'
-    // console.log(this.searchText)
+    //  (this.searchText)
   }
 
   ngDoCheck(){
-    console.log('ngDoCheck Called')
+     ('ngDoCheck Called')
   }
 
 }

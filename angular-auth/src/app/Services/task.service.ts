@@ -1,9 +1,10 @@
 import { Injectable, inject } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams, HttpEventType } from '@angular/common/http';
 import { Task } from "../Model/Task";
-import { map, catchError, tap } from 'rxjs/operators';
-import { Subject, throwError } from 'rxjs';
+import { map, catchError, tap, take, exhaustMap } from 'rxjs/operators';
+import { Subject, throwError, Observable } from 'rxjs';
 import { LoggingService } from "./Logging.Service";
+import { AuthServices } from "./Auth-Services/auth.services";
 
 @Injectable({
     providedIn: 'root'
@@ -12,106 +13,152 @@ export class TaskService{
     http: HttpClient = inject(HttpClient);
     loggingService: LoggingService = inject(LoggingService);
     errorSubject = new Subject<HttpErrorResponse>();
+    userSubject = inject(AuthServices)
 
-    CreateTask(task: Task){
-        const headers = new HttpHeaders({'my-header': 'hello-world'})
-        this.http.post<{name: string}>(
-            'https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks.json', 
-            task, {headers: headers}
-            )
-            .pipe(catchError((err) => {
-                //Write the logic to log errors
-                const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()}
+    CreateTask(task: Task): Observable<{name: string}>{
+        return this.userSubject.userSubject.pipe(
+            take(1),
+            exhaustMap(user => {
+                const headers = new HttpHeaders({'my-header': 'hello-world'});
+                let queryParams = new HttpParams().set('auth', user.token);
+                
+                return this.http.post<{name: string}>(
+                    'https://angular-http-tutorial-2377a-default-rtdb.firebaseio.com/tasks.json', 
+                    task, 
+                    {headers: headers, params: queryParams}
+                );
+            }),
+            catchError((err) => {
+                const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()};
                 this.loggingService.logError(errorObj);
                 return throwError(() => err);
-            }))
-            .subscribe({error: (err) => {
+            })
+        );
+    }
+
+    DeleteTask(id: string | undefined): Observable<any>{
+        return this.userSubject.userSubject.pipe(
+            take(1),
+            exhaustMap(user => {
+                let queryParams = new HttpParams().set('auth', user.token);
+                
+                return this.http.delete(
+                    'https://angular-http-tutorial-2377a-default-rtdb.firebaseio.com/tasks/' + id + '.json',
+                    {params: queryParams}
+                );
+            }),
+            catchError((err) => {
+                const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()};
+                this.loggingService.logError(errorObj);
                 this.errorSubject.next(err);
-            }});
+                return throwError(() => err);
+            })
+        );
     }
 
-    DeleteTask(id: string | undefined){
-        this.http.delete('https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks/' +id+'.json')
-        .pipe(catchError((err) => {
-            //Write the logic to log errors
-            const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()}
-            this.loggingService.logError(errorObj);
-            return throwError(() => err);
-        }))
-        .subscribe({error: (err) => {
-            this.errorSubject.next(err);
-        }});
+    DeleteAllTasks(): Observable<any>{
+        return this.userSubject.userSubject.pipe(
+            take(1),
+            exhaustMap(user => {
+                let queryParams = new HttpParams().set('auth', user.token);
+                
+                return this.http.delete(
+                    'https://angular-http-tutorial-2377a-default-rtdb.firebaseio.com/tasks.json', 
+                    {observe: 'events', responseType: 'json', params: queryParams}
+                );
+            }),
+            tap((event) => {
+                 (event);
+                if(event.type === HttpEventType.Sent){
+                    // Handle sent event if needed
+                }
+            }),
+            catchError((err) => {
+                const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()};
+                this.loggingService.logError(errorObj);
+                this.errorSubject.next(err);
+                return throwError(() => err);
+            })
+        );
     }
 
-    DeleteAllTasks(){
-        this.http.delete('https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks.json', {observe: 'events', responseType: 'json'})
-        .pipe(tap((event) => {
-            console.log(event);
-            if(event.type === HttpEventType.Sent){
+    GetAlltasks(): Observable<Task[]>{
+         ('get all tasks called');
 
-            }
-        }), catchError((err) => {
-            //Write the logic to log errors
-            const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()}
-            this.loggingService.logError(errorObj);
-            return throwError(() => err);
-        }))
-        .subscribe({error: (err) => {
-            this.errorSubject.next(err);
-        }})
+        return this.userSubject.userSubject.pipe(
+            take(1),
+            exhaustMap(user => {
+                let queryParams = new HttpParams().set('auth', user.token);
+
+                return this.http.get<{[key: string]: Task}>(
+                    'https://angular-http-tutorial-2377a-default-rtdb.firebaseio.com/tasks.json', 
+                    {params: queryParams}
+                );
+            }), 
+            map((response) => {
+
+                let tasks: Task[] = [];
+            
+                
+                if(response) {
+                    for(let key in response){
+                        if(response.hasOwnProperty(key)){
+                            tasks.push({...response[key], id: key});
+                        }              
+                    }
+                }
+                
+                return tasks;
+            }),
+            catchError((err) => {
+                console.error('Error fetching tasks:', err);
+                return throwError(() => err);
+            })
+        );
     }
 
-    GetAlltasks(){
-        let headers = new HttpHeaders();
-        headers = headers.append('content-type', 'application/json');
-        headers = headers.append('content-type', 'text/html')
+    UpdateTask(id: string | undefined, data: Task): Observable<any>{
+        return this.userSubject.userSubject.pipe(
+            take(1),
+            exhaustMap(user => {
+                let queryParams = new HttpParams().set('auth', user.token);
+                
+                return this.http.put(
+                    'https://angular-http-tutorial-2377a-default-rtdb.firebaseio.com/tasks/' + id + '.json', 
+                    data,
+                    {params: queryParams}
+                );
+            }),
+            catchError((err) => {
+                const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()};
+                this.loggingService.logError(errorObj);
+                this.errorSubject.next(err);
+                return throwError(() => err);
+            })
+        );
+    }
 
-        let queryParams = new HttpParams();
-        queryParams = queryParams.set('page', 2);
-        queryParams = queryParams.set('item', 10)
-
-        return this.http.get<{[key: string]: Task}>(
-            'https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks.json'
-            ,{headers: headers, params: queryParams, observe: 'body'}
-            ).pipe(map((response) => {
-                 //TRANSFORM DATA
-                 let tasks = [];
-                 console.log(response);
-                 for(let key in response){
-                   if(response.hasOwnProperty(key)){
-                     tasks.push({...response[key], id: key});
-                   }              
-                 }
-     
-                 return tasks;
-            }), catchError((err) => {
-                //Write the logic to log errors
-                const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()}
+    getTaskDetails(id: string | undefined): Observable<Task>{
+        return this.userSubject.userSubject.pipe(
+            take(1),
+            exhaustMap(user => {
+                let queryParams = new HttpParams().set('auth', user.token);
+                
+                return this.http.get<Task>(
+                    'https://angular-http-tutorial-2377a-default-rtdb.firebaseio.com/tasks/' + id + '.json',
+                    {params: queryParams}
+                );
+            }),
+            map((response) => {
+                 (response);
+                let task = {...response, id: id};
+                return task;
+            }),
+            catchError((err) => {
+                const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()};
                 this.loggingService.logError(errorObj);
                 return throwError(() => err);
-            }))
-    }
-
-    UpdateTask(id: string | undefined, data: Task){
-        this.http.put('https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks/'+id+'.json', data)
-        .pipe(catchError((err) => {
-            //Write the logic to log errors
-            const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()}
-            this.loggingService.logError(errorObj);
-            return throwError(() => err);
-        }))
-        .subscribe({error: (err) => {
-            this.errorSubject.next(err);
-        }});
-    }
-
-    getTaskDetails(id: string | undefined){
-        return this.http.get('https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks/'+id+'.json')
-        .pipe(map((response) => {
-            console.log(response)
-            let task = {};
-            task = {...response, id: id}
-            return task;
-        }))
+            })
+        );
     }
 }

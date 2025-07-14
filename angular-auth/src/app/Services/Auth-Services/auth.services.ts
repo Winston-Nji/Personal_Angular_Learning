@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { BehaviorSubject, Subject, tap } from "rxjs";
 import { User } from "../../Model/User";
 import { AuthResponseInterface } from "../../Interface/auth.Interface";
+import { Router } from "@angular/router";
 
 @Injectable(
     {providedIn: 'root'}
@@ -14,6 +15,8 @@ export class AuthServices{
     AIzaSyDxV-R4fV5p2v9eema8zijuU-PTut_4TEs`
 
     private loginUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDxV-R4fV5p2v9eema8zijuU-PTut_4TEs`
+
+    router = inject(Router)
 
     userSubject = new BehaviorSubject <User | null>(null)
 
@@ -40,9 +43,42 @@ export class AuthServices{
 
         const user = new User(res.email, res.localId, res.idToken, expiresIn )
 
-        console.log(user)
+        localStorage.setItem('user', JSON.stringify(user))
 
             
         this.userSubject.next(user)
+    }
+
+    logout(){
+        this.userSubject.next(null)
+        this.router.navigate(['/login'])
+    }
+
+    autoLogin(){
+        const userData  = localStorage.getItem('user')
+        
+        const parsedUser = JSON.parse(userData)
+
+        if(!parsedUser){
+            alert("No user found, Login")
+            this.router.navigate(['/login'])
+        }
+
+        const loggedUser = new User(parsedUser.email, parsedUser.id, parsedUser._token, parsedUser._expiresIn)
+
+        if(loggedUser.token){
+            this.userSubject.next(loggedUser)
+
+            const timerValue = parsedUser._expiresIn.getTime() - new Date().getTime()
+
+            this.autoLogOut(timerValue)
+        }
+    }
+
+    autoLogOut(expireTime: number){
+        setTimeout(() => {
+            this.userSubject.next(null)
+        }, expireTime)
+        
     }
 }

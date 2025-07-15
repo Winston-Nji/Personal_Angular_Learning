@@ -7,19 +7,17 @@ import { ContactComponent } from '../contact/contact.component';
 @Injectable({
     providedIn : 'root'
 })
-export class AuthGuard implements  CanActivateChild {
+export class AuthGuard  {
 
     authService = inject(AuthService)
 
-    // canActivate(route: ActivatedRouteSnapshot, state:RouterStateSnapshot):boolean{
-
-    //     if(this.authService.isAuthenticated()){
-    //          (this.authService.isAuthenticated())
-    //         return true
-    //     }else{
-    //         return false
-    //     }
-    // }
+    canActivate(route: ActivatedRouteSnapshot, state:RouterStateSnapshot):boolean{
+        if(this.authService.isAuthenticated()){
+            return true
+        }else{
+            return false
+        }
+    }
 
     canActivateChild(){
         if(this.authService.isAuthenticated()){

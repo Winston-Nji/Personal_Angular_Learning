@@ -30,8 +30,8 @@ export class AppComponent {
         region : new FormControl(null, Validators.required),
         portal : new FormControl(null, Validators.required),
       }),
-      skills: new FormArray([
-        new FormControl(null, Validators.required),
+      skills : new FormArray([
+        new FormControl(null, [Validators.required])
       ]),
       experience : new FormArray([
         new FormGroup({
@@ -47,9 +47,9 @@ export class AppComponent {
   }
 
   OnFormSubmitted(){
-     ('clicked')
-     (this.reactiveForm, 'reavtieForm')
+    
     this.formData = this.reactiveForm.value
+  
   }
 
   addSkill(){
@@ -80,30 +80,31 @@ export class AppComponent {
 
   createUserName(){
 
+       
+
       const firstName:String = this.reactiveForm.get('firstname').value
       const lastName:String = this.reactiveForm.get('lastname').value
       const dob:Number = new Date(this.reactiveForm.get('dob').value).getFullYear()
-       (firstName.slice(0,3), lastName, dob)
 
       this.userName +=  firstName.slice(0,3) +  lastName.slice(0,3) +  this.userName + dob
 
-    // this.reactiveForm.setValue({
-    //   firstname : this.reactiveForm.get('firstname').value,
-    //   lastname : this.reactiveForm.get('lastname').value,
-    //   email : this.reactiveForm.get('email').value,
-    //   username : this.userName,
-    //   dob : this.reactiveForm.get('dob').value,
-    //   gender : this.reactiveForm.get('gender').value,
-    //   address: {
-    //     street : '',
-    //     country : '',
-    //     city : '',
-    //     region : '',
-    //     portal : '',
-    //   },
-    //   skills: this.reactiveForm.get('skills').value,
-    //   experience : this.reactiveForm.get('experience').value
-    // })
+    this.reactiveForm.setValue({
+      firstname : this.reactiveForm.get('firstname').value,
+      lastname : this.reactiveForm.get('lastname').value,
+      email : this.reactiveForm.get('email').value,
+      username : this.userName,
+      dob : this.reactiveForm.get('dob').value,
+      gender : this.reactiveForm.get('gender').value,
+      address: {
+        street : this.reactiveForm.get('address')['controls'].street.value,
+        country : this.reactiveForm.get('address')['controls'].country.value,
+        city : this.reactiveForm.get('address')['controls'].city.value,
+        region : this.reactiveForm.get('address')['controls'].region.value,
+        portal : this.reactiveForm.get('address')['controls'].portal.value,
+      },
+      skills: this.reactiveForm.get('skills').value,
+      experience : this.reactiveForm.get('experience').value
+    })
 
     this.reactiveForm.patchValue({
       username:this.userName
